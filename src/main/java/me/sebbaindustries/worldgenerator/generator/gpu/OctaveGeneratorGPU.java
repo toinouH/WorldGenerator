@@ -56,11 +56,11 @@ public class OctaveGeneratorGPU extends Kernel {
         final double[] amp = {1.0D};
         final double[] freq = {1.0D};
         double[] x[0] ={
-            xin
-        } ;
+            xin;
+        }
         double[] y[0] ={
-            yin
-        } ;
+            yin;
+        }
         double[] z[0] ={
             zin
         } ;
