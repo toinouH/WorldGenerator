@@ -1,5 +1,7 @@
 package me.sebbaindustries.worldgenerator.generator.gpu;
 
+import com.aparapi.Range;
+
 public class PerlinNoiseGeneratorGPU extends NoiseGeneratorGPU {
     protected static final int[][] grad3 = new int[][]{{1, 1, 0}, {-1, 1, 0}, {1, -1, 0}, {-1, -1, 0}, {1, 0, 1}, {-1, 0, 1}, {1, 0, -1}, {-1, 0, -1}, {0, 1, 1}, {0, -1, 1}, {0, 1, -1}, {0, -1, -1}};
     private static final PerlinNoiseGeneratorGPU instance = new PerlinNoiseGeneratorGPU();
@@ -14,12 +16,8 @@ public class PerlinNoiseGeneratorGPU extends NoiseGeneratorGPU {
         }
 
     }
-
-    public void noise(double x, double y, double z) {
-    }
-
-    ;
-    /*
+/* //tout était décommenté à partir d'ici
+    public double noise(double x, double y, double z) {
         int X = (x >= 0.0D ? (int) x : (int) x - 1) & 255;
         int Y = (y >= 0.0D ? (int) y : (int) y - 1) & 255;
         int Z = (z >= 0.0D ? (int) z : (int) z - 1) & 255;
@@ -36,8 +34,9 @@ public class PerlinNoiseGeneratorGPU extends NoiseGeneratorGPU {
         int BA = this.perm[B] + Z;
         int BB = this.perm[B + 1] + Z;
         return lerp(fZ, lerp(fY, lerp(fX, grad(this.perm[AA], x, y, z), grad(this.perm[BA], x - 1.0D, y, z)), lerp(fX, grad(this.perm[AB], x, y - 1.0D, z), grad(this.perm[BB], x - 1.0D, y - 1.0D, z))), lerp(fY, lerp(fX, grad(this.perm[AA + 1], x, y, z - 1.0D), grad(this.perm[BA + 1], x - 1.0D, y, z - 1.0D)), lerp(fX, grad(this.perm[AB + 1], x, y - 1.0D, z - 1.0D), grad(this.perm[BB + 1], x - 1.0D, y - 1.0D, z - 1.0D))));
-    }*/
-/*   public double noise(double x, double y, double z) {
+    }
+    */
+   public double noise(double x, double y, double z) {
         GPU = new double[]{x, y, z, 0};
         permGPU_tmp = this.perm;
         this.setExplicit(true);
@@ -68,5 +67,6 @@ public class PerlinNoiseGeneratorGPU extends NoiseGeneratorGPU {
         int BA = permGPU[B] + Z;
         int BB = permGPU[B + 1] + Z;
         GPU[3] = lerp(fZ, lerp(fY, lerp(fX, grad(permGPU[AA], x, y, z), grad(permGPU[BA], x - 1.0D, y, z)), lerp(fX, grad(permGPU[AB], x, y - 1.0D, z), grad(permGPU[BB], x - 1.0D, y - 1.0D, z))), lerp(fY, lerp(fX, grad(permGPU[AA + 1], x, y, z - 1.0D), grad(permGPU[BA + 1], x - 1.0D, y, z - 1.0D)), lerp(fX, grad(permGPU[AB + 1], x, y - 1.0D, z - 1.0D), grad(permGPU[BB + 1], x - 1.0D, y - 1.0D, z - 1.0D))));
-    }*/
+    }
 }
+// tout était décommenté

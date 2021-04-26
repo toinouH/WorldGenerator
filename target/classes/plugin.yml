@@ -1,0 +1,8 @@
+name: 'WorldGenerator'
+version: 1.0-SNAPSHOT
+main: me.sebbaindustries.worldgenerator.Core
+prefix: 'WorldGen'
+load: STARTUP
+api-version: '1.15'
+author: 'SebbaIndustries, krusic22'
+description: 'The worst custom world generator for Minecraft 1.15'

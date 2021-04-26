@@ -27,7 +27,7 @@ public abstract class NoiseGeneratorGPU extends Kernel {
         return ((hash & 1) == 0 ? u : -u) + ((hash & 2) == 0 ? v : -v);
     }
 
-    public abstract void noise(double var1, double var3, double var5);
+    public abstract double noise(double var1, double var3, double var5);
 
     @Override
     public void run() {
